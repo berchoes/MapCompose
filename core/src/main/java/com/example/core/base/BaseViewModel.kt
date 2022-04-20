@@ -8,5 +8,5 @@ import dagger.hilt.android.lifecycle.HiltViewModel
  */
 
 @HiltViewModel
-class BaseViewModel: ViewModel() {
+abstract class BaseViewModel: ViewModel() {
 }

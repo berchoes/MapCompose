@@ -1,4 +1,4 @@
-package com.example.mapcompose
+package com.example.mapcompose.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,7 +8,8 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.mapcompose.ui.theme.MapComposeTheme
+import com.example.mapcompose.presentation.home.HomePage
+import com.example.mapcompose.util.theme.MapComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,22 +18,9 @@ class MainActivity : ComponentActivity() {
             MapComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    HomePage()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MapComposeTheme {
-        Greeting("Android")
     }
 }

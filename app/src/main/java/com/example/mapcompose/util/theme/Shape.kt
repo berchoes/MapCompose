@@ -1,4 +1,4 @@
-package com.example.mapcompose.ui.theme
+package com.example.mapcompose.util.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
