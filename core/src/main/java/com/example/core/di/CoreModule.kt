@@ -1,6 +1,6 @@
 package com.example.core.di
 
-import com.example.mapcompose.common.BASE_URL
+import com.example.core.common.BASE_URL
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

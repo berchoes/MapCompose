@@ -15,7 +15,6 @@ class GetStationsUseCase @Inject constructor(private val repository: StationsRep
 
     operator fun invoke(): Flow<Resource<List<Station>>> = flow {
         try {
-            emit(Resource.Loading)
             val stations = repository.getStations().map { it.toStationModel() }
             emit(Resource.Success<List<Station>>(stations))
         } catch (e: Exception) {

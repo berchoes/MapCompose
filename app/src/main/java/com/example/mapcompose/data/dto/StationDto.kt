@@ -21,6 +21,6 @@ fun StationDto.toStationModel() = Station(
     centerCoordinates = this.centerCoordinates ?: "noCoordinates",
     id = this.id,
     name = this.name ?: "noName",
-    trips = this.trips ?: emptyList(),
+    trips = this.trips?.map { it.toTripModel() } ?: emptyList(),
     tripsCount = this.tripsCount
 )

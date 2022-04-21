@@ -15,7 +15,6 @@ class BookTripUseCase @Inject constructor(private val repository: StationsReposi
 
     operator fun invoke(stationId: Int, tripId: Int): Flow<Resource<BookResponse>> = flow {
         try {
-            emit(Resource.Loading)
             val response = repository.bookTrip(stationId, tripId).toBookResponseModel()
             emit(Resource.Success<BookResponse>(response))
         } catch (e: Exception) {
