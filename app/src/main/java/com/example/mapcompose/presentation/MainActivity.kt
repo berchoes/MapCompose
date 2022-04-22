@@ -14,12 +14,14 @@ import com.example.mapcompose.presentation.home.HomePage
 import com.example.mapcompose.presentation.navigation.NavigationHost
 import com.example.mapcompose.presentation.navigation.Screen
 import com.example.mapcompose.util.theme.MapComposeTheme
+import com.google.android.gms.maps.MapsInitializer
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MapsInitializer.initialize(this)
         setContent {
             MapComposeTheme {
                 // A surface container using the 'background' color from the theme

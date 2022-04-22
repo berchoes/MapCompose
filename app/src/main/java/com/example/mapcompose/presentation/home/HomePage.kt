@@ -3,15 +3,23 @@ package com.example.mapcompose.presentation.home
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mapcompose.presentation.home.components.CustomDialog
 import com.example.mapcompose.presentation.home.components.MapView
 import com.example.mapcompose.presentation.navigation.Screen
+import com.example.mapcompose.util.theme.DarkBlue
+import com.example.mapcompose.util.theme.Typography
 
 
 /**
@@ -24,11 +32,48 @@ fun HomePage(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
 
+    val selectedStation = viewModel.selectedStation
+
     Box(modifier = Modifier.fillMaxSize()) {
 
-        MapView(viewModel.stations, onMarkerClicked = {
-            navController.navigate(Screen.Trips.route + "/${viewModel.convertToJson(it)}")
-        })
+        MapView(
+            viewModel = viewModel,
+            stations = viewModel.stations,
+            onMarkerClicked = {
+                viewModel.setTappedStation(it)
+            },
+            onInfoWindowClosed = {
+                viewModel.setTappedStation(null)
+            })
+
+        if (selectedStation != null) {
+            Button(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(horizontal = 24.dp, vertical = 30.dp)
+                    .fillMaxWidth(),
+                onClick = {
+                    navController.navigate(
+                        Screen.Trips.route + "/${
+                            viewModel.convertToJson(
+                                selectedStation
+                            )
+                        }"
+                    )
+                },
+                shape = RoundedCornerShape(40.dp),
+                colors = ButtonDefaults.buttonColors(contentColor = DarkBlue)
+
+            ) {
+                Text(
+                    text = "List Trips",
+                    color = Color.White,
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(vertical = 4.dp),
+                    style = MaterialTheme.typography.h1
+                )
+            }
+        }
 
         if (viewModel.isLoading) {
             Box(modifier = Modifier

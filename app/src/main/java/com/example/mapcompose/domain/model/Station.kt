@@ -8,5 +8,6 @@ data class Station(
     val id: Int?,
     val name: String,
     val trips: List<Trip>,
-    val tripsCount: Int?
+    val tripsCount: Int?,
+    var isSelected: Boolean = false
 )
