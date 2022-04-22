@@ -19,6 +19,14 @@ abstract class BaseViewModel: ViewModel() {
     var errorMessage by mutableStateOf<String?>(null)
         protected set
 
+    var isDialogVisible by mutableStateOf(false)
+        private set
+
+    fun showDialog(isShowing: Boolean){
+        isDialogVisible = isShowing
+        errorMessage = null
+    }
+
     fun convertToJson(item : Any): String {
         return Gson().toJson(item)
     }

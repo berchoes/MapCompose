@@ -5,3 +5,4 @@ package com.example.mapcompose.common
  */
 
 const val CURRENT_STATION = "CURRENT_STATION"
+const val BOOKED_TRIP = "BOOKED_TRIP"

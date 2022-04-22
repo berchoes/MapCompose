@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import com.example.mapcompose.R
 import com.example.mapcompose.domain.model.Station
 import com.example.mapcompose.presentation.home.HomeViewModel
+import com.example.mapcompose.util.bitmapDescriptor
 import com.example.mapcompose.util.convertToLatLng
 import com.example.mapcompose.util.theme.MAP_STYLE_JSON
 import com.google.android.gms.maps.model.*
@@ -22,18 +23,17 @@ import com.google.maps.android.compose.*
 
 @Composable
 fun MapView(
-    viewModel: HomeViewModel,
     stations: List<Station> = emptyList(),
     onMarkerClicked: (Station) -> Unit = {},
     onInfoWindowClosed: (Station) -> Unit = {},
 ) {
-    val mapStartPosition = LatLng(41.071833, 29.030358)
+    val mapStartPosition = LatLng(41.061173, 29.062033)
     val context = LocalContext.current
     val uiSettings = remember { MapUiSettings(zoomControlsEnabled = false) }
 
-    val icon = viewModel.bitmapDescriptor(context, R.drawable.point)
-    val completedIcon = viewModel.bitmapDescriptor(context, R.drawable.completed)
-    val selectedIcon = viewModel.bitmapDescriptor(context, R.drawable.selected_point)
+    val icon = bitmapDescriptor(context, R.drawable.point)
+    val completedIcon = bitmapDescriptor(context, R.drawable.completed)
+    val selectedIcon = bitmapDescriptor(context, R.drawable.selected_point)
 
 
     val cameraPositionState = rememberCameraPositionState {
@@ -59,7 +59,7 @@ fun MapView(
                         true
                     },
                     title = "${(station.tripsCount ?: 0)} trips",
-                    icon = if (station.isSelected) selectedIcon else icon,
+                    icon = if (station.isSelected) selectedIcon else if(station.isBooked) completedIcon else icon,
                 )
             }
         }

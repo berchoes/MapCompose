@@ -29,7 +29,7 @@ fun NavigationHost(navController: NavHostController) {
                 navArgument(CURRENT_STATION) {
                     type = NavType.StringType
                 }
-            )
+            ),
         ) {
             TripsPage(navController)
         }

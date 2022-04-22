@@ -1,9 +1,15 @@
 package com.example.mapcompose.presentation.trips
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.mapcompose.base.BaseViewModel
 import com.example.mapcompose.common.CURRENT_STATION
+import com.example.mapcompose.common.Resource
+import com.example.mapcompose.common.SavedLists
+import com.example.mapcompose.domain.model.BookResponse
 import com.example.mapcompose.domain.model.Station
 import com.example.mapcompose.domain.usecase.BookTripUseCase
 import com.google.gson.Gson
@@ -33,14 +39,27 @@ class TripsViewModel @Inject constructor(
             return field
         }
 
-    private fun bookTrip(tripId: Int) {
+    var bookTripResult by mutableStateOf<BookResponse?>(null)
+        private set
+
+    fun bookTrip(tripId: Int) {
+        isLoading = true
         station?.id?.let { stationId ->
             bookTripUseCase.invoke(stationId, tripId).onEach {
-
+                when (it) {
+                    is Resource.Error -> {
+                        errorMessage = it.message
+                        showDialog(true)
+                    }
+                    is Resource.Success -> {
+                        bookTripResult = it.data.copy(stationId = station?.id)
+                        SavedLists.everyBookedTripIds.add(tripId)
+                    }
+                }
+                isLoading = false
             }.launchIn(viewModelScope)
         }
     }
-
 
     private fun convertJsonToStation(json: String): Station {
         return Gson().fromJson(json, Station::class.java)

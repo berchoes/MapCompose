@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,11 +16,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.mapcompose.presentation.home.components.CustomDialog
+import com.example.mapcompose.common.BOOKED_TRIP
+import com.example.mapcompose.presentation.home.components.ErrorDialog
 import com.example.mapcompose.presentation.home.components.MapView
 import com.example.mapcompose.presentation.navigation.Screen
 import com.example.mapcompose.util.theme.DarkBlue
-import com.example.mapcompose.util.theme.Typography
 
 
 /**
@@ -31,13 +32,15 @@ fun HomePage(
     navController: NavController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-
     val selectedStation = viewModel.selectedStation
+
+    val bookedTrip =
+        navController.currentBackStackEntry?.savedStateHandle?.getLiveData<String>(BOOKED_TRIP)
+            ?.observeAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
 
         MapView(
-            viewModel = viewModel,
             stations = viewModel.stations,
             onMarkerClicked = {
                 viewModel.setTappedStation(it)
@@ -83,10 +86,15 @@ fun HomePage(
             }
         }
 
-        if (viewModel.errorMessage != null) {
-            CustomDialog(
-                error = viewModel.errorMessage
+        if(viewModel.isDialogVisible){
+            ErrorDialog(
+                errorMessage = viewModel.errorMessage
             )
+        }
+
+        if (bookedTrip?.value != null) {
+            val bookedTripObject = viewModel.convertJsonToBookResponse(bookedTrip.value!!)
+            bookedTripObject.stationId?.let { viewModel.setBookedStation(it) }
         }
     }
 }
