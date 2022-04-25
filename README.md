@@ -34,7 +34,7 @@ Data Transfer Object classes are defined in this folder. Each one has a transfor
 
 ### * UseCases
 
-2 UseCases were defined in the project for getting all of the stations from the Api and booking a trip. UseCases take the repository as a constructor parameter which is provided by Hilt. Some of the logic is implemented in usecases for making ViewModels more simple and readable.
+2 UseCases were defined in the project for getting all of the stations from the Api and booking a trip. UseCases take the repository as a constructor parameter which is provided by Hilt. Some of the logic is implemented in usecases for making ViewModels more readable and simpler.
 
 ### * SavedLists Object
 
