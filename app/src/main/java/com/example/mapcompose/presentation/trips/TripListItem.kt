@@ -35,7 +35,7 @@ fun TripListItem(
             text = trip.busName,
             color = Color.Black,
             style = MaterialTheme.typography.h1,
-            fontSize = 13.sp
+            fontSize = 14.sp
         )
 
         Row(
@@ -47,7 +47,7 @@ fun TripListItem(
                 color = Color.Black,
                 style = MaterialTheme.typography.h1,
                 modifier = Modifier.padding(horizontal = 14.dp),
-                fontSize = 13.sp
+                fontSize = 14.sp
             )
             Button(
                 onClick = { if (!isBooked) onBookClicked(trip) },

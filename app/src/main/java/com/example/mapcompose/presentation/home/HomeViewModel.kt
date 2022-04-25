@@ -42,10 +42,9 @@ class HomeViewModel @Inject constructor(
         getStations()
     }
 
-    private fun getStations() {
-        isLoading = true
-        getStationsUseCase.invoke().onEach {
-            when (it) {
+    private fun getStations(){
+        getStationsUseCase.invoke().fetch {
+            when(it){
                 is Resource.Error -> {
                     errorMessage = it.message
                     showDialog(true)
@@ -54,8 +53,7 @@ class HomeViewModel @Inject constructor(
                     stations = it.data
                 }
             }
-            isLoading = false
-        }.launchIn(viewModelScope)
+        }
     }
 
     fun setTappedStation(station: Station?){

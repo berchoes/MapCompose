@@ -43,9 +43,8 @@ class TripsViewModel @Inject constructor(
         private set
 
     fun bookTrip(tripId: Int) {
-        isLoading = true
         station?.id?.let { stationId ->
-            bookTripUseCase.invoke(stationId, tripId).onEach {
+            bookTripUseCase.invoke(stationId, tripId).fetch {
                 when (it) {
                     is Resource.Error -> {
                         errorMessage = it.message
@@ -56,8 +55,7 @@ class TripsViewModel @Inject constructor(
                         SavedLists.everyBookedTripIds.add(tripId)
                     }
                 }
-                isLoading = false
-            }.launchIn(viewModelScope)
+            }
         }
     }
 

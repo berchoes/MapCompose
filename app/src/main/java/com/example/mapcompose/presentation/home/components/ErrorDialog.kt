@@ -19,21 +19,22 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ErrorDialog(
-    errorMessage: String? = null,
+    errorMessage: String,
+    isNetworkError: Boolean = false,
     onDismissed: () -> Unit = {},
 ) {
     AlertDialog(
-        shape = RoundedCornerShape(4.dp),
+        shape = RoundedCornerShape(6.dp),
         title = {
             Text(
-                text = "The trip you selected is full.",
+                text = if (isNetworkError) "Error" else "The trip you selected is full.",
                 color = Color.Black,
                 style = MaterialTheme.typography.h1
             )
         },
         text = {
             Text(
-                text = "Please select another one.",
+                text = if (isNetworkError) errorMessage else "Please select another one.",
                 color = Color.Black,
                 style = MaterialTheme.typography.body1
             )
@@ -49,7 +50,10 @@ fun ErrorDialog(
                     .padding(horizontal = 12.dp, vertical = 12.dp),
                 shape = RoundedCornerShape(40.dp)
             ) {
-                Text(text = "Select a trip", color = Color.White)
+                Text(
+                    modifier = Modifier.padding(vertical = 6.dp),
+                    text = if(isNetworkError) "Okay" else "Select a trip", color = Color.White
+                )
             }
         }
     )

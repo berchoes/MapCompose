@@ -93,7 +93,7 @@ dependencies {
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     //Google Maps
-    implementation "com.google.maps.android:maps-compose:1.0.0"
+    implementation "com.google.maps.android:maps-compose:2.0.0"
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
 }

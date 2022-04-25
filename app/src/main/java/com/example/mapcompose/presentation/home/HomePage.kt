@@ -86,10 +86,8 @@ fun HomePage(
             }
         }
 
-        if(viewModel.isDialogVisible){
-            ErrorDialog(
-                errorMessage = viewModel.errorMessage
-            )
+        if (viewModel.isDialogVisible) {
+            ErrorDialog(errorMessage = viewModel.errorMessage)
         }
 
         if (bookedTrip?.value != null) {
