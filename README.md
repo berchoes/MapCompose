@@ -8,7 +8,7 @@ MVVM with UseCases and DTO pattern is used. Contains Data, Domain and Presentati
 * Dagger - Hilt is used for Dependenct Injection. Making the code cleaner, more testable and memory efficient.
 * Retrofit
 * Kotlin Coroutines & Flows
-* Compose Navigation for passing data between pages and managing backstacks.
+* Compose Navigation for page transactions, passing data between pages and managing backstacks.
 
 ## State in Jetpack Compose
 
