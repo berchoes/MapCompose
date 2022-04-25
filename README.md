@@ -24,14 +24,14 @@ Project contains a submodule called Core. Core module contains the base url and 
 
 ## Important Files & Folders
 
-### BaseViewModel 
+### * BaseViewModel 
 
 An abstract class that contains shared variables, states and functions used by all of the ViewModels. Such as loading indicator state, error messages and util methods for collecting the flows provided from UseCases.
 
-### Dto Folder
+### * Dto Folder
 
 Data Transfer Object classes are defined in this folder. Each one has a transformation method for mapping DTOs to Models that will be used in the app. This object seperation is made for making the application independent from the very first object that is fetched and serialized from the Api. With this way the project will be safe even if the DTO has to change in the feature.
 
-### UseCases
+### * UseCases
 
 2 UseCases were defined in the project for getting all of the stations from the Api and booking a trip. UseCases take the repository as a constructor parameter which is provided by Hilt. Some of the logic is hoisted to usecases for making ViewModels more simple and readable.
