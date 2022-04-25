@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -15,7 +16,7 @@ import kotlinx.coroutines.flow.onEach
  */
 
 
-abstract class BaseViewModel: ViewModel() {
+abstract class BaseViewModel : ViewModel() {
 
     var isLoading by mutableStateOf(false)
         protected set
@@ -35,11 +36,14 @@ abstract class BaseViewModel: ViewModel() {
         return Gson().toJson(item)
     }
 
-    protected fun <T> Flow<T>.fetch(action: (T) -> Unit){
+    protected fun <T> Flow<T>.fetch(action: (T) -> Unit) {
         isLoading = true
         this.onEach {
             action.invoke(it)
             isLoading = false
-        }.launchIn(viewModelScope)
+        }
+            .catch { e -> println(e.cause?.message) }
+            .launchIn(viewModelScope)
+
     }
 }

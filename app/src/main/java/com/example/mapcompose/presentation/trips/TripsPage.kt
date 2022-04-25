@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import com.example.mapcompose.common.BOOKED_TRIP
 import com.example.mapcompose.presentation.home.components.ErrorDialog
 import com.example.mapcompose.presentation.navigation.Screen
+import com.example.mapcompose.presentation.trips.components.TripListItem
 
 /**
  * Created by Berk Ç. on 21.04.2022.

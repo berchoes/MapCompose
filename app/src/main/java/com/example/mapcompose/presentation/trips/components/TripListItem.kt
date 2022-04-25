@@ -1,6 +1,5 @@
-package com.example.mapcompose.presentation.trips
+package com.example.mapcompose.presentation.trips.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -57,7 +56,7 @@ fun TripListItem(
                 )
             ) {
                 Text(
-                    text = if(isBooked) "Booked" else "Book",
+                    text = if (isBooked) "Booked" else "Book",
                     color = Color.White,
                     fontSize = 12.sp,
                     style = MaterialTheme.typography.h1,
