@@ -16,7 +16,7 @@ In Compose, a composable shouldn't hold its own state objects. These objects sho
 
 ## Unit Testing
 
-* Only UseCases were covered in this project. With a fake repository created by implementing the StationRepository interface.
+* Only the UseCases were covered in this project. With a fake repository created by implementing the StationRepository interface.
 
 ## Modules
 
