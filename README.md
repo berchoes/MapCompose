@@ -16,7 +16,7 @@ In Compose, a composable shouldn't hold its own state objects. These objects sho
 
 ## Unit Testing
 
-* Only the UseCases were covered in this project. With a fake repository created by implementing the StationRepository interface.
+* Only the UseCases were covered in this project. With a fake repository created by implementing the StationsRepository interface.
 
 ## Modules
 
@@ -35,3 +35,7 @@ Data Transfer Object classes are defined in this folder. Each one has a transfor
 ### * UseCases
 
 2 UseCases were defined in the project for getting all of the stations from the Api and booking a trip. UseCases take the repository as a constructor parameter which is provided by Hilt. Some of the logic is hoisted to usecases for making ViewModels more simple and readable.
+
+### * SavedLists Object
+
+This object holds a HashSet of all of the booked trip IDs for changing the UI later in the app. However this list of trips are not stored locally so they disappear when the app is destroyed.
