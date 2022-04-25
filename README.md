@@ -1,6 +1,6 @@
 # Architecture
 
-MVVM with UseCases and DTO pattern is used. Contains Data, Domain and Presentation layers. Data layer is responsible with communicating with the Api. Domain layer holds the UseCases and Repository protocols. Finally the Presentation layer contains the Composables, ViewModels. Basically all the UI related stuff.
+MVVM with UseCases and DTO pattern is used. Contains Data, Domain and Presentation layers. Data layer is responsible with communicating with the Api. Domain layer holds the UseCases and Repository protocols. Finally the Presentation layer contains the Composables, ViewModels. Basically all of the UI related stuff.
 
 ## Tech Stack
 
