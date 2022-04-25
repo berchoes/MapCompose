@@ -12,7 +12,7 @@ MVVM with UseCases and DTO pattern is used. Contains Data, Domain and Presentati
 
 ## State in Jetpack Compose
 
-In Compose, a composable shouldn't hold its own state objects. These objects should be hoisted to other composables or state holder classes. This "State hoisting" makes composables reusable and testable. In this case ViewModels hold the states.
+In Compose, a composable shouldn't hold its own state objects. These objects should be hoisted to other composables or state holder classes. This "state hoisting" makes composables reusable and testable. In this case ViewModels hold the states.
 
 ## Unit Testing
 
