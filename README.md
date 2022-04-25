@@ -20,7 +20,7 @@ In Compose, a composable shouldn't hold its own state objects. These objects sho
 
 ## Modules
 
-Project contains a submodule called Core. Core module contains the base url and a base dependenct injection object that provides core network instances such as Gson, OkHttp and Retrofit.
+Project contains a submodule called Core. Core module contains the base url and a base dependency injection object that provides core network instances such as Gson, OkHttp and Retrofit.
 
 ## Important Files & Folders
 
