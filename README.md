@@ -1,6 +1,6 @@
 # Architecture
 
-MVVM with UseCase, DTO and Single Activity patterns were used. Contains Data, Domain and Presentation layers. Data layer is responsible with communicating with the Api. Domain layer holds the UseCases, Models and Repository protocols. Finally the Presentation layer contains the Composables, ViewModels. Basically all of the UI related stuff.
+MVVM with UseCases, DTO and Single Activity patterns were used. Contains Data, Domain and Presentation layers. Data layer is responsible with communicating with the Api. Domain layer holds the UseCases, Models and Repository protocols. Finally the Presentation layer contains the Composables, ViewModels. Basically all of the UI related stuff.
 
 ## Tech Stack
 
@@ -30,7 +30,7 @@ An abstract class that contains shared variables, states and functions used by a
 
 ### * Dto Folder
 
-Data Transfer Object classes are defined in this folder. Each one has a transformation method for mapping DTOs to Models that will be used in the app. This object seperation is made for making the application independent from the very first object that is fetched and serialized from the Api. With this way the project will be safe even if the DTO has to change in the feature.
+Data Transfer Object classes are defined in this folder. Each one has a transformation method for mapping DTOs to Models that will be used in the app. This object seperation is made for making the application independent from the very first object that is fetched and serialized from the Api. This way, the application will be safe even if the DTO has to change in the feature.
 
 ### * UseCases
 
